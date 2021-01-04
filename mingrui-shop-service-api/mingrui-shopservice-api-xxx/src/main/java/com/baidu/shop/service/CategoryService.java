@@ -2,11 +2,13 @@ package com.baidu.shop.service;
 
 import com.baidu.shop.base.Result;
 import com.baidu.shop.entity.CategoryEntity;
+import com.baidu.shop.validate.group.MingruiOperation;
 import com.google.gson.JsonObject;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
+
 
 import java.util.List;
 
@@ -22,4 +24,17 @@ public interface CategoryService {
     @ApiOperation(value = "通过id删除")
     @DeleteMapping(value = "/category/delete")
     Result<JsonObject> deleteCategoryById(Integer id);
+
+    @ApiOperation(value = "通过id修改")
+    @PutMapping(value = "/category/update")
+    Result<JsonObject> updateCategoryById(@Validated({MingruiOperation.Update.class}) @RequestBody CategoryEntity categoryEntity);
+
+    @ApiOperation(value = "新增")
+    @PostMapping(value = "/category/save")
+    Result<JsonObject> saveCategory(@Validated({MingruiOperation.Add.class}) @RequestBody CategoryEntity categoryEntity);
+
+    @ApiOperation(value = "通过查询pid商品分类")
+    @GetMapping(value = "/category/brand")
+    Result<List<CategoryEntity>> getCategoryByBrandId(Integer brandId);
+
 }

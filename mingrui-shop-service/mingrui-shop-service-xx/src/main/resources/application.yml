@@ -8,7 +8,7 @@ spring:
   datasource:
     # 数据源名称，任意
     name: mysql
-    url: jdbc:mysql://localhost:3306/2005
+    url: jdbc:mysql://localhost:3306/2005?useSSL=true&nullNamePatternMatchesAll=true&serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8
     # 数据库连接用户
     username: root
     # 数据库连接密码
