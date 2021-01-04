@@ -114,7 +114,7 @@ public class CategoryServiceImpl extends BaseApiService implements CategoryServi
         Example example1 = new Example(CategoryBrandEntity.class);
         example1.createCriteria().andEqualTo("categoryId",categoryEntity.getId());
         List<CategoryBrandEntity> categoryBrandEntities = categoryBrandMapper.selectByExample(example1);
-        if (categoryBrandEntities.size()>=1) return this.setResultError(HTTPStatus.OPERATION_ERROR,"当前节点有关联的品牌，请先删除关联的品牌");
+        if (categoryBrandEntities.size()!=0) return this.setResultError(HTTPStatus.OPERATION_ERROR,"当前节点有关联的品牌，请先删除关联的品牌");
 
         //通过当前节点的父节点id 查询 当前节点(将要被删除的节点)的父节点下是否还有其他子节点
         Example example = new Example(CategoryEntity.class);
