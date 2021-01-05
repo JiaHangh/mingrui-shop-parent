@@ -25,7 +25,7 @@ public interface BrandService {
     @GetMapping(value = "/brand/list")
     public Result<PageInfo<BrandEntity>> getBrandInfo(BrandDTO brandDTO);
 
-    //接口的默认修饰符为private
+    //接口的默认修饰符为public
     @ApiOperation(value = "新增品牌")
     @PostMapping(value = "/brand/save")
     Result<JsonObject> save(@Validated({MingruiOperation.Add.class}) @RequestBody BrandDTO brandDTO);

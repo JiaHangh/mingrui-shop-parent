@@ -31,20 +31,20 @@ public interface SpecificationService {
     @DeleteMapping(value = "specgroup/delete/{id}")
     Result<JsonObject> deleteSpecGroup(@PathVariable Integer id);
 
-    @ApiOperation(value = "查询")
+    @ApiOperation(value = "查询规格参数")
     @GetMapping(value = "/specparam/groups")
     Result<List<SpecParamEntity>> getSepcParamInfo(SpecParamDTO specParamDTO);
 
-    @ApiOperation(value = "增加")
+    @ApiOperation(value = "增加规格参数")
     @PostMapping(value = "/specparam/save")
     Result<JsonObject> saveSpecParam(@RequestBody SpecParamDTO specParamDTO);
 
-    @ApiOperation(value = "修改")
+    @ApiOperation(value = "修改规格参数")
     @PutMapping(value = "/specparam/save")
     Result<JsonObject> editSpecParam(@RequestBody SpecParamDTO specParamDTO);
 
 
-    @ApiOperation(value = "删除")
+    @ApiOperation(value = "删除规格参数")
     @DeleteMapping(value = "/specparam/delete")
     Result<JsonObject> deleteSpecParam(Integer id);
 }
