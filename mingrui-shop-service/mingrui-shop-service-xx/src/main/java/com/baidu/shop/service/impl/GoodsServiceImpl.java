@@ -31,12 +31,16 @@ public class GoodsServiceImpl extends BaseApiService implements GoodsService {
 
     @Override
     public Result<PageInfo<SpuEntity>> getSpuInfo(SpuDTO spuDTO) {
+        //分页
         if (ObjectUtil.isNotNull(spuDTO.getPage()) && ObjectUtil.isNotNull(spuDTO.getRows()))
             PageHelper.startPage(spuDTO.getPage(),spuDTO.getRows());
+
         Example example = new Example(SpuEntity.class);
         Example.Criteria criteria = example.createCriteria();
+        //判断是否上架
         if (ObjectUtil.isNotNull(spuDTO.getSaleable()) && spuDTO.getSaleable()<2)
             criteria.andEqualTo("saleable",spuDTO.getSaleable());
+        //根据title条件查询
         if (!StringUtils.isEmpty(spuDTO.getTitle()))
             criteria.andLike("title","%"+spuDTO.getTitle()+"%");
 

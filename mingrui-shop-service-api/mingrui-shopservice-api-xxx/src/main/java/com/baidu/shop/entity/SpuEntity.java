@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.Date;
 
 /**
  * 2 * @ClassName SpuEntity
@@ -34,5 +35,9 @@ public class SpuEntity {
     private Integer saleable;
 
     private Integer valid;
+
+    private Date createTime;
+
+    private Date lastUpdateTime;
 
 }
