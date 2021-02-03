@@ -17,9 +17,6 @@
         <module name="mingrui-shop-service-xxx" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="mingrui-shop-service-xx" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
@@ -30,7 +27,6 @@
       <module name="mingrui-shop-commoms" options="-parameters" />
       <module name="mingrui-shop-service" options="-parameters" />
       <module name="mingrui-shop-service-api" options="-parameters" />
-      <module name="mingrui-shop-service-xx" options="-parameters" />
       <module name="mingrui-shop-service-xxx" options="-parameters" />
       <module name="mingrui-shopcommon-core" options="-parameters" />
       <module name="mingrui-shopservice-api-xxx" options="-parameters" />

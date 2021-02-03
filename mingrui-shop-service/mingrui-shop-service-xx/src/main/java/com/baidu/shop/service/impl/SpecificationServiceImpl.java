@@ -4,7 +4,6 @@ import com.baidu.shop.base.BaseApiService;
 import com.baidu.shop.base.Result;
 import com.baidu.shop.dto.SpecGroupDTO;
 import com.baidu.shop.dto.SpecParamDTO;
-import com.baidu.shop.entity.CategoryEntity;
 import com.baidu.shop.entity.SpecGroupEntity;
 import com.baidu.shop.entity.SpecParamEntity;
 import com.baidu.shop.mapper.SpecGroupMapper;
@@ -85,7 +84,13 @@ public class SpecificationServiceImpl extends BaseApiService implements Specific
         SpecParamEntity specParamEntity = BaiduBeanUtil.copyProperties(specParamDTO, SpecParamEntity.class);
 
         Example example = new Example(SpecParamEntity.class);
-        example.createCriteria().andEqualTo("groupId",specParamEntity.getGroupId());
+        Example.Criteria criteria = example.createCriteria();
+
+        if (ObjectUtil.isNotNull(specParamEntity.getGroupId()))
+            criteria.andEqualTo("groupId",specParamEntity.getGroupId());
+        if (ObjectUtil.isNotNull(specParamEntity.getCid()))
+            criteria.andEqualTo("cid",specParamEntity.getCid());
+
         List<SpecParamEntity> specParamEntities = specParamMapper.selectByExample(example);
         return this.setResultSuccess(specParamEntities);
     }

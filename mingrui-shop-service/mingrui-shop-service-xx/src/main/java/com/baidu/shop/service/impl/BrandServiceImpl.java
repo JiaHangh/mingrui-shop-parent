@@ -41,6 +41,12 @@ public class BrandServiceImpl extends BaseApiService implements BrandService {
     private CategoryBrandMapper categoryBrandMapper;
 
     @Override
+    public Result<List<BrandEntity>> getBrandInfoByCategoryId(Integer cid) {
+        List<BrandEntity> list=brandMapper.getBrandInfoByCategoryId(cid);
+        return this.setResultSuccess(list);
+    }
+
+    @Override
     public Result<JsonObject> deleteBrandId(Integer id) {
         brandMapper.deleteByPrimaryKey(id);
         //封装方法-----通过brandId删除中间表的数据
